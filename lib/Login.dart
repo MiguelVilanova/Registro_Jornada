@@ -1,9 +1,24 @@
+/// Descarga de archivos desde Flutterviz, arrastre y suelte una herramienta. Para más detalles, visite https://flutterviz.io/
 
+/// Descarga de archivos desde Flutterviz, arrastre y suelte una herramienta. Para más detalles, visite https://flutterviz.io/
 
 import 'package:flutter/material.dart';
 import 'package:registro_jornada/Principal.dart';
 
+import 'ResetPass.dart';
 
+/*
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      home: Login(),
+    );
+  }
+}*/
 
 class Login extends StatelessWidget {
   @override
@@ -46,7 +61,8 @@ class Login extends StatelessWidget {
                   children: [
                     ///***If you have exported images you must have to copy those images in assets/images directory.
                     Image(
-                      image: NetworkImage(
+                      image:
+                      NetworkImage(
                           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoSL4WHG5Ypv4e4W58d5Gt4PnBEM_kZQDDhAKjZAOYLBy6V1karPn2SMil6DFkjUUeX7M&usqp=CAU"),
                       height: 100,
                       width: 100,
@@ -99,7 +115,7 @@ class Login extends StatelessWidget {
                             borderSide:
                                 BorderSide(color: Color(0xff000000), width: 1),
                           ),
-                          hintText: "Introduzca test",
+                          hintText: "Introduzca Email",
                           hintStyle: TextStyle(
                             fontWeight: FontWeight.w400,
                             fontStyle: FontStyle.normal,
@@ -156,16 +172,25 @@ class Login extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.fromLTRB(0, 16, 0, 60),
                       child: Align(
-                        alignment: Alignment.centerRight,
-                        child: Text(
-                          "¿Olvidó su contraseña?",
-                          textAlign: TextAlign.start,
-                          overflow: TextOverflow.clip,
-                          style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            fontStyle: FontStyle.normal,
-                            fontSize: 18,
-                            color: Color(0xff3a57e8),
+                        alignment: Alignment.topRight,
+                        child: GestureDetector(
+                          onTap: () {
+                            // Aquí puedes poner la lógica para llevar al usuario a otra pantalla
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => ResetPass()),
+                            );
+                          },
+                          child: Text(
+                            "¿Olvidó su contraseña?",
+                            textAlign: TextAlign.start,
+                            overflow: TextOverflow.clip,
+                            style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              fontStyle: FontStyle.normal,
+                              fontSize: 18,
+                              color: Color(0xff3a57e8),
+                            ),
                           ),
                         ),
                       ),
