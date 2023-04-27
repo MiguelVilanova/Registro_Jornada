@@ -1,6 +1,4 @@
-/// Descarga de archivos desde Flutterviz, arrastre y suelte una herramienta. Para más detalles, visite https://flutterviz.io/
 
-/// Descarga de archivos desde Flutterviz, arrastre y suelte una herramienta. Para más detalles, visite https://flutterviz.io/
 
 import 'package:flutter/material.dart';
 import 'package:registro_jornada/Principal.dart';
