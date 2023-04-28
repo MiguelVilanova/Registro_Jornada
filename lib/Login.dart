@@ -115,7 +115,7 @@ class Login extends StatelessWidget {
                             borderSide:
                                 BorderSide(color: Color(0xff000000), width: 1),
                           ),
-                          hintText: "Introduzca Email (notest)",
+                          hintText: "Introduzca Email (test)",
                           hintStyle: TextStyle(
                             fontWeight: FontWeight.w400,
                             fontStyle: FontStyle.normal,
