@@ -5,54 +5,44 @@
 import 'package:flutter/material.dart';
 import 'package:registro_jornada/Principal.dart';
 
-import 'ResetPass.dart';
+import '../ResetPass.dart';
 
-/*
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      home: Login(),
-    );
-  }
-}*/
 
 class Login extends StatelessWidget {
+  const Login({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffe6e6e6),
+      backgroundColor: const Color(0xffe6e6e6),
       body: Stack(
         alignment: Alignment.topCenter,
         children: [
           Container(
-            margin: EdgeInsets.all(0),
-            padding: EdgeInsets.all(0),
+            margin: const EdgeInsets.all(0),
+            padding: const EdgeInsets.all(0),
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height * 0.35000000000000003,
             decoration: BoxDecoration(
-              color: Color(0xff3a57e8),
+              color: const Color(0xff3a57e8),
               shape: BoxShape.rectangle,
               borderRadius: BorderRadius.zero,
-              border: Border.all(color: Color(0x4d9e9e9e), width: 1),
+              border: Border.all(color: const Color(0x4d9e9e9e), width: 1),
             ),
           ),
           Container(
-            margin: EdgeInsets.fromLTRB(20, 100, 20, 50), //contenedor cajas
-            padding: EdgeInsets.all(0),
+            margin: const EdgeInsets.fromLTRB(20, 100, 20, 50), //contenedor cajas
+            padding: const EdgeInsets.all(0),
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             decoration: BoxDecoration(
-              color: Color(0xffffffff),
+              color: const Color(0xffffffff),
               shape: BoxShape.rectangle,
               borderRadius: BorderRadius.circular(16.0),
-              border: Border.all(color: Color(0x4d9e9e9e), width: 1),
+              border: Border.all(color: const Color(0x4d9e9e9e), width: 1),
             ),
             child: Padding(
-              padding: EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -60,7 +50,7 @@ class Login extends StatelessWidget {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     ///***If you have exported images you must have to copy those images in assets/images directory.
-                    Image(
+                    const Image(
                       image:
                       NetworkImage(
                           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoSL4WHG5Ypv4e4W58d5Gt4PnBEM_kZQDDhAKjZAOYLBy6V1karPn2SMil6DFkjUUeX7M&usqp=CAU"),
@@ -68,7 +58,7 @@ class Login extends StatelessWidget {
                       width: 100,
                       fit: BoxFit.cover,
                     ),
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.fromLTRB(0, 30, 0, 70),
                       child: Align(
                         alignment: Alignment.center,
@@ -87,13 +77,14 @@ class Login extends StatelessWidget {
                     ),
                     Padding(
                       padding:
-                          EdgeInsets.symmetric(vertical: 16, horizontal: 0),
-                      child: TextField(
+                          const EdgeInsets.symmetric(vertical: 16, horizontal: 0),
+                      child: TextFormField(
                         controller: TextEditingController(),
                         obscureText: false,
                         textAlign: TextAlign.left,
                         maxLines: 1,
-                        style: TextStyle(
+                        onChanged: (text) {},
+                        style: const TextStyle(
                           fontWeight: FontWeight.w400,
                           fontStyle: FontStyle.normal,
                           fontSize: 14,
@@ -103,29 +94,30 @@ class Login extends StatelessWidget {
                           disabledBorder: UnderlineInputBorder(
                             borderRadius: BorderRadius.circular(4.0),
                             borderSide:
-                                BorderSide(color: Color(0xff000000), width: 1),
+                                const BorderSide(color: Color(0xff000000), width: 1),
                           ),
                           focusedBorder: UnderlineInputBorder(
                             borderRadius: BorderRadius.circular(4.0),
                             borderSide:
-                                BorderSide(color: Color(0xff000000), width: 1),
+                                const BorderSide(color: Color(0xff000000), width: 1),
                           ),
                           enabledBorder: UnderlineInputBorder(
                             borderRadius: BorderRadius.circular(4.0),
                             borderSide:
-                                BorderSide(color: Color(0xff000000), width: 1),
+                                const BorderSide(color: Color(0xff000000), width: 1),
                           ),
                           hintText: "Introduzca Email (test)",
-                          hintStyle: TextStyle(
+                          hintStyle: const TextStyle(
                             fontWeight: FontWeight.w400,
                             fontStyle: FontStyle.normal,
                             fontSize: 18,
                             color: Color(0xff494646),
                           ),
                           filled: true,
-                          fillColor: Color(0xffffffff),
+                          fillColor: const Color(0xffffffff),
                           isDense: false,
-                          contentPadding: EdgeInsets.all(0),
+                          //suffixIcon:const Icon(Icons.mail,color:Color(0xff212435),size:24),
+                          contentPadding: const EdgeInsets.all(0),
                         ),
                       ),
                     ),
@@ -134,7 +126,7 @@ class Login extends StatelessWidget {
                       obscureText: false,
                       textAlign: TextAlign.start,
                       maxLines: 1,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontWeight: FontWeight.w400,
                         fontStyle: FontStyle.normal,
                         fontSize: 14,
@@ -144,33 +136,33 @@ class Login extends StatelessWidget {
                         disabledBorder: UnderlineInputBorder(
                           borderRadius: BorderRadius.circular(4.0),
                           borderSide:
-                              BorderSide(color: Color(0xff000000), width: 1),
+                              const BorderSide(color: Color(0xff000000), width: 1),
                         ),
                         focusedBorder: UnderlineInputBorder(
                           borderRadius: BorderRadius.circular(4.0),
                           borderSide:
-                              BorderSide(color: Color(0xff000000), width: 1),
+                              const BorderSide(color: Color(0xff000000), width: 1),
                         ),
                         enabledBorder: UnderlineInputBorder(
                           borderRadius: BorderRadius.circular(4.0),
                           borderSide:
-                              BorderSide(color: Color(0xff000000), width: 1),
+                              const BorderSide(color: Color(0xff000000), width: 1),
                         ),
                         hintText: "Introduzca Contraseña",
-                        hintStyle: TextStyle(
+                        hintStyle: const TextStyle(
                           fontWeight: FontWeight.w400,
                           fontStyle: FontStyle.normal,
                           fontSize: 18,
                           color: Color(0xff494646),
                         ),
                         filled: true,
-                        fillColor: Color(0xffffffff),
+                        fillColor: const Color(0xffffffff),
                         isDense: false,
-                        contentPadding: EdgeInsets.all(0),
+                        contentPadding: const EdgeInsets.all(0),
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.fromLTRB(0, 16, 0, 60),
+                      padding: const EdgeInsets.fromLTRB(0, 16, 0, 60),
                       child: Align(
                         alignment: Alignment.topRight,
                         child: GestureDetector(
@@ -178,10 +170,10 @@ class Login extends StatelessWidget {
                             // Aquí puedes poner la lógica para llevar al usuario a otra pantalla
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => ResetPass()),
+                              MaterialPageRoute(builder: (context) => const ResetPass()),
                             );
                           },
-                          child: Text(
+                          child: const Text(
                             "¿Olvidó su contraseña?",
                             textAlign: TextAlign.start,
                             overflow: TextOverflow.clip,
@@ -202,13 +194,16 @@ class Login extends StatelessWidget {
                               MaterialPageRoute(builder: (context) => Principal()),
                           );
                       },
-                      color: Color(0xff3a57e8),
+                      color: const Color(0xff3a57e8),
                       elevation: 10,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(16.0),
                       ),
-                      padding: EdgeInsets.all(16),
-                      child: Text(
+                      padding: const EdgeInsets.all(16),
+                      textColor: const Color(0xffffffff),
+                      height: 40,
+                      minWidth: MediaQuery.of(context).size.width,
+                      child: const Text(
                         "Acceso",
                         style: TextStyle(
                           fontSize: 20,
@@ -216,9 +211,6 @@ class Login extends StatelessWidget {
                           fontStyle: FontStyle.normal,
                         ),
                       ),
-                      textColor: Color(0xffffffff),
-                      height: 40,
-                      minWidth: MediaQuery.of(context).size.width,
                     ),
                   ],
                 ),
