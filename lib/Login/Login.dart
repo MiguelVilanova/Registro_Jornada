@@ -4,15 +4,35 @@
 
 import 'package:flutter/material.dart';
 import 'package:registro_jornada/Principal.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import '../ResetPass.dart';
 
+Future<String?> mailRegister(String mail, String pwd) async {
+  try {
+    await FirebaseAuth.instance
+        .createUserWithEmailAndPassword(email: mail, password: pwd);
+    return null;
+  } on FirebaseAuthException catch (ex) {
+    return "${ex.code}: ${ex.message}";
+  }
+}
+
+ Future<UserCredential> mailSignIn(String mail, String pwd) async {
+  try {
+    return await FirebaseAuth.instance
+        .signInWithEmailAndPassword(email: mail, password: pwd);
+  } on FirebaseAuthException catch (ex) {
+    throw "${ex.code}: ${ex.message}";
+  }
+}
 
 class Login extends StatelessWidget {
   const Login({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final emailController = TextEditingController();
+    final passwordController = TextEditingController();
     return Scaffold(
       backgroundColor: const Color(0xffe6e6e6),
       body: Stack(
@@ -79,7 +99,7 @@ class Login extends StatelessWidget {
                       padding:
                           const EdgeInsets.symmetric(vertical: 16, horizontal: 0),
                       child: TextFormField(
-                        controller: TextEditingController(),
+                        controller: emailController,
                         obscureText: false,
                         textAlign: TextAlign.left,
                         maxLines: 1,
@@ -122,7 +142,7 @@ class Login extends StatelessWidget {
                       ),
                     ),
                     TextField(
-                      controller: TextEditingController(),
+                      controller: passwordController,
                       obscureText: false,
                       textAlign: TextAlign.start,
                       maxLines: 1,
@@ -188,7 +208,8 @@ class Login extends StatelessWidget {
                       ),
                     ),
                     MaterialButton(
-                      onPressed: () {
+                      onPressed: () async {
+                          final credentials = await mailSignIn(emailController.text, passwordController.text);
                           Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) => Principal()),
