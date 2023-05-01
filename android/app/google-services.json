@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "289357692973",
+    "project_id": "registrojornada-cd6fd",
+    "storage_bucket": "registrojornada-cd6fd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:289357692973:android:f8841eda52fb286d9cb8a4",
+        "android_client_info": {
+          "package_name": "com.dam.registro_jornada"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "289357692973-q719had9rh90ij1qs1651tn74ahuipjt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDF5l-VkzEc9A4PBMGXhLeH3fN2VFj-PsM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "289357692973-q719had9rh90ij1qs1651tn74ahuipjt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,16 +1,28 @@
 
+import 'firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 import 'package:flutter/material.dart';
-import 'package:registro_jornada/Login.dart';
-import 'package:registro_jornada/Principal.dart';
+import 'package:registro_jornada/Login/Login.dart';
 
-void main() => runApp(MyApp());
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  // Inicializar Firebase
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Jornada Laboral',
       home: Login(),
     );
   }
