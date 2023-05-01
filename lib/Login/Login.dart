@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:registro_jornada/Principal.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../ResetPass.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 Future<String?> mailRegister(String mail, String pwd) async {
   try {
@@ -17,12 +18,23 @@ Future<String?> mailRegister(String mail, String pwd) async {
   }
 }
 
- Future<UserCredential> mailSignIn(String mail, String pwd) async {
+ mailSignIn(String mail, String pwd, BuildContext context) async {
   try {
-    return await FirebaseAuth.instance
+         await FirebaseAuth.instance
         .signInWithEmailAndPassword(email: mail, password: pwd);
+        Navigator.push(context, MaterialPageRoute(builder: (context) => Principal()));
   } on FirebaseAuthException catch (ex) {
-    throw "${ex.code}: ${ex.message}";
+    Fluttertoast.showToast(
+        msg: ex.toString(),
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 5,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0,
+        webBgColor: "red",
+        webPosition: "center"
+    );
   }
 }
 
@@ -142,8 +154,10 @@ class Login extends StatelessWidget {
                       ),
                     ),
                     TextField(
+                      enableSuggestions: false,
+                      autocorrect: false,
                       controller: passwordController,
-                      obscureText: false,
+                      obscureText: true,
                       textAlign: TextAlign.start,
                       maxLines: 1,
                       style: const TextStyle(
@@ -209,11 +223,8 @@ class Login extends StatelessWidget {
                     ),
                     MaterialButton(
                       onPressed: () async {
-                          final credentials = await mailSignIn(emailController.text, passwordController.text);
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => Principal()),
-                          );
+                          await mailSignIn(emailController.text, passwordController.text, context);
+                          passwordController.text = "";
                       },
                       color: const Color(0xff3a57e8),
                       elevation: 10,
