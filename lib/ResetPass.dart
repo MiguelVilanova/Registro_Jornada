@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'Login/Login.dart';
 
 class ResetPass extends StatelessWidget {
   const ResetPass({super.key});
@@ -151,21 +152,23 @@ class ResetPass extends StatelessWidget {
                       ),
                     ],),),
               ),),
-            const Padding(
+            Padding(
               padding:EdgeInsets.fromLTRB(30, 50, 0, 0),
-              child:Icon(
-                Icons.arrow_back_ios,
-
-                color:Color(0xffffffff),
-                size:30,
-              ),
+              child: IconButton(
+            icon: const Icon(Icons.arrow_back_ios),
+            color: Color(0xffffffff),
+            iconSize:30,
+            onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
+            },
+            ),
             ),
             Padding(
               padding:const EdgeInsets.all(16),
               child:Align(
                 alignment:Alignment.bottomCenter,
                 child:MaterialButton(
-                  onPressed:(){},
+                  onPressed:() async{},
                   color:const Color(0xff3a57e8),
                   elevation:0,
                   shape:RoundedRectangleBorder(

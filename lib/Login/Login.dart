@@ -13,8 +13,8 @@ Future<String?> mailRegister(String mail, String pwd) async {
     await FirebaseAuth.instance
         .createUserWithEmailAndPassword(email: mail, password: pwd);
     return null;
-  } on FirebaseAuthException catch (ex) {
-    return "${ex.code}: ${ex.message}";
+  } on FirebaseAuthException catch (e) {
+    return "${e.code}: ${e.message}";
   }
 }
 
