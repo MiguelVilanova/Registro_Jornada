@@ -22,7 +22,7 @@ Future<String?> mailRegister(String mail, String pwd) async {
   try {
          await FirebaseAuth.instance
         .signInWithEmailAndPassword(email: mail, password: pwd);
-        Navigator.push(context, MaterialPageRoute(builder: (context) => Principal()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => registro()));
   } on FirebaseAuthException catch (ex) {
     Fluttertoast.showToast(
         msg: ex.toString(),

@@ -189,7 +189,7 @@ class ResetPass extends StatelessWidget {
                         Fluttertoast.showToast(
                           msg: "⚠️Introduzca un email válido",
                           toastLength: Toast.LENGTH_SHORT,
-                          gravity: ToastGravity.BOTTOM,
+                          gravity: ToastGravity.CENTER,
                           timeInSecForIosWeb: 5,
                           backgroundColor: const Color(0xFFFF0000),
                           textColor: const Color(0xFFFFFFFF),
