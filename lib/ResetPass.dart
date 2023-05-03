@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'Login/Login.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class ResetPass extends StatelessWidget {
   const ResetPass({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final emailController = TextEditingController();
     return Scaffold(
       backgroundColor: const Color(0xff3a57e8),
       body:SizedBox(
@@ -103,7 +106,7 @@ class ResetPass extends StatelessWidget {
                       Padding(
                         padding:const EdgeInsets.fromLTRB(0, 16, 0, 0),
                         child:TextField(
-                          controller:TextEditingController(),
+                          controller:emailController,
                           obscureText:false,
                           textAlign:TextAlign.start,
                           maxLines:1,
@@ -135,7 +138,7 @@ class ResetPass extends StatelessWidget {
                                   width:1
                               ),
                             ),
-                            hintText:"Introduza su email",
+                            hintText:"Introduzca su email",
                             hintStyle:const TextStyle(
                               fontWeight:FontWeight.w400,
                               fontStyle:FontStyle.normal,
@@ -155,20 +158,45 @@ class ResetPass extends StatelessWidget {
             Padding(
               padding:EdgeInsets.fromLTRB(30, 50, 0, 0),
               child: IconButton(
-            icon: const Icon(Icons.arrow_back_ios),
-            color: Color(0xffffffff),
-            iconSize:30,
-            onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
-            },
-            ),
+                icon: Icon(Icons.arrow_back_ios),
+                color: Color(0xffffffff),
+                iconSize:30,
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
+                },
+              ),
             ),
             Padding(
               padding:const EdgeInsets.all(16),
               child:Align(
                 alignment:Alignment.bottomCenter,
                 child:MaterialButton(
-                  onPressed:() async{},
+                  onPressed:()async{
+                    //Comprobar que existe el email introducido en bbdd:
+                    try {
+                      //envio correo reestablecimiento de contraseña
+                      await FirebaseAuth.instance
+                          .sendPasswordResetEmail(email: emailController.text);
+
+                      //Mostrar alerta de correo enviado con exito
+                      String mensajeCorreoEnviado="Se ha enviado el correo para reestablecer la contraseña a: "+emailController.text;
+                      mostrarAlerta(context, mensajeCorreoEnviado);
+
+                    }
+                    on FirebaseAuthException catch(ex){
+                        //Email no válido
+                        //FLUTTERTOAST
+                        Fluttertoast.showToast(
+                          msg: "⚠️Introduzca un email válido",
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.BOTTOM,
+                          timeInSecForIosWeb: 5,
+                          backgroundColor: const Color(0xFFFF0000),
+                          textColor: const Color(0xFFFFFFFF),
+                          fontSize: 16.0,
+                        );
+                    }
+                  },
                   color:const Color(0xff3a57e8),
                   elevation:0,
                   shape:RoundedRectangleBorder(
@@ -189,8 +217,34 @@ class ResetPass extends StatelessWidget {
     )
     ;}
 }
-
-
+/**
+ * Método para mostrar una Alerta con un mensaje personalizado
+ * @param mensaje: Mensaje a mostrar en la alerta
+ */
+mostrarAlerta(BuildContext context, String mensaje) {
+  Widget okBoton = TextButton(
+    child: Text("OK"),
+    onPressed: () {
+      //Cerrar ventana de alerta
+      Navigator.of(context).pop();
+      //Volver a pantalla de login
+      Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
+    },
+  );
+  AlertDialog alerta = AlertDialog(
+    title: Text("Aviso"),
+    content: Text(mensaje),
+    actions: [
+      okBoton,
+    ],
+  );
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alerta;
+    },
+  );
+}
 
 /*
 
